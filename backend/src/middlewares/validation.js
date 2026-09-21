@@ -1,9 +1,29 @@
-const validateProduct = (req, res, next) => {
-  const { name, price } = req.body;
-  if (!name || !price) {
-    return res.status(400).json({ error: "Nama dan Harga produk tidak boleh kosong!" });
+const validateSiswa = (req, res, next) => {
+
+  const {
+    kode_siswa,
+    nama_siswa,
+    alamat_siswa,
+    tgl_siswa,
+    jurusan_siswa
+  } = req.body;
+
+  if (
+    !kode_siswa ||
+    !nama_siswa ||
+    !alamat_siswa ||
+    !tgl_siswa ||
+    !jurusan_siswa
+  ) {
+
+    return res.status(400).json({
+      error: "Kode, Nama, Alamat, Tanggal, dan Jurusan siswa tidak boleh kosong!"
+    });
+
   }
+
   next();
+
 };
 
-module.exports = { validateProduct };
+module.exports = { validateSiswa };

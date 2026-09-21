@@ -1,184 +1,279 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+:root {
+  /* TEMA WARNA: BIRU MUDA & PINK */
+  --bg-main: #f8fafc;            /* Background halaman belakang */
+  --blue-light: #e0f2fe;         /* Biru muda pastel untuk navbar/header */
+  --blue-dark: #0369a1;          /* Tulisan biru tua kontras */
+  --pink-light: #fce7f3;         /* Pink pastel lembut untuk kotak form */
+  --pink-dark: #be185d;          /* Tulisan/aksen pink tua */
+  --border-color: #cbd5e1;       /* Warna garis pembatas halus */
+  
+  --text: #334155;
+  --text-h: #0f172a;
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color: var(--text);
+  background: var(--bg-main);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
+  @media (max-width: 1024px) {
+    font-size: 16px;
   }
 }
 
-#center {
+body {
+  margin: 0;
+  background-color: var(--bg-main);
+}
+
+/* CONTAINER UTAMA HALAMAN */
+#root {
+  width: 900px; /* Dipersempit sedikit dari 1126px agar lebih pas dan proposional */
+  max-width: 95%;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  box-sizing: border-box;
 }
 
-#next-steps {
+h1, h2 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 38px;
+  letter-spacing: -1px;
+  margin: 24px 0;
+}
+
+h2 {
+  font-size: 22px;
+  margin: 0 0 16px;
+}
+
+/* NAVBAR (Tema Biru Muda) */
+.navbar { 
+  background: var(--blue-light); 
+  color: var(--blue-dark); 
+  padding: 15px 25px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+} 
+  
+.navbar-logo { 
+  font-size: 20px; 
+  font-weight: bold; 
+} 
+
+.navbar-menu { 
+  display: flex; 
+  gap: 25px; 
+} 
+
+.navbar-menu a { 
+  color: var(--blue-dark); 
+  text-decoration: none; 
+  font-size: 16px; 
+  font-weight: 500;
+} 
+
+.navbar-menu a:hover { 
+  text-decoration: underline; 
+}
+
+
+/* WADAH UTAMA FORM (Tema Pink Lembut) */
+.container-form {
+  padding: 25px;
+  font-family: sans-serif;
+  max-width: 550px;
+  width: 100%;
+  margin: 20px auto; /* Membuat kotak form otomatis berada di TENGAH */
+  background-color: var(--blue-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+}
+
+.container-form h2 {
+  color: var(--blue-dark);
+}
+
+/* Pengaturan elemen di dalam form */
+.form-produk {
   display: flex;
-  border-top: 1px solid var(--border);
+  flex-direction: column;
+  gap: 15px;
+  text-align: left; /* Teks label menjadi rata kiri agar rapi */
+}
+
+.form-grup label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--pink-dark);
+}
+
+/* Memperbaiki Kotak Input, Textarea, dan Select (Dipaksa Latar Putih Bersih) */
+.form-grup input,
+.form-grup textarea,
+.form-grup select {
+  width: 100%;
+  padding: 10px 12px;
+  box-sizing: border-box; 
+  border: 1px solid #f4b5d4; /* Border senada warna pink */
+  border-radius: 6px;
+  background-color: #ffffff !important; /* Paksa tetap putih meski komputer dark mode */
+  color: #333333 !important;            /* Teks input hitam gelap agar terbaca */
+  font-size: 15px;
+}
+
+.form-grup input:focus,
+.form-grup textarea:focus,
+.form-grup select:focus {
+  outline: none;
+  border-color: var(--pink-dark);
+  box-shadow: 0 0 0 3px rgba(222, 24, 93, 0.1);
+}
+
+
+/* WADAH TABEL (Tema Kombinasi) */
+.container-produk {
+  padding: 20px 0;
+  font-family: sans-serif;
+  margin-top: 10px;
+}
+
+.container-produk h2 {
+  color: var(--blue-dark);
+}
+
+/* Gaya untuk tabel utama */
+.tabel-produk {
+  width: 100%;
   text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  border-collapse: collapse; 
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+/* Kepala Tabel warna Biru Muda */
+.tabel-produk thead tr {
+  background-color: var(--blue-light);
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
+.tabel-produk th {
+  padding: 12px 15px;
+  color: var(--blue-dark);
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 2px solid #bae6fd;
+}
+
+/* Isi baris tabel */
+.tabel-produk td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+  font-size: 15px;
+}
+
+/* Efek hover baris tabel berubah pink sangat tipis saat disorot */
+.tabel-produk tbody tr:hover {
+  background-color: #fdf2f8;
+}
+
+.tabel-produk .kolom-aksi {
+  text-align: center;
+}
+
+.wrapper-aksi {
   display: flex;
   gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+  justify-content: center;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+
+/* SEKTOR TOMBOL-TOMBOL AKSI */
+.btn-form {
+  padding: 11px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: background-color 0.2s;
 }
 
-.ticks {
-  position: relative;
+/* Tombol Tambah / Simpan diubah menjadi aksen biru agar serasi */
+.btn-tambah, .btn-simpan {
   width: 100%;
+  padding: 12px;
+  background-color: #38bdf8; /* Biru terang cerah */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.btn-tambah:hover, .btn-simpan:hover {
+  background-color: #0284c7;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+.btn-batal {
+  background-color: #94a3b8;
+  color: white;
+}
+
+.btn-batal:hover {
+  background-color: #64748b;
+}
+
+.btn-aksi {
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* Tombol Aksi Edit (Kuning Cerah Kontras) */
+.btn-edit {
+  background-color: #ffc107; /* Kuning solid */
+  color: #000000;            /* Teks hitam agar jelas dibaca */
+}
+
+.btn-edit:hover {
+  background-color: #e0a800; /* Kuning sedikit lebih gelap saat diarahkan kursor */
+}
+
+/* Tombol Aksi Hapus (Merah Cerah Kontras) */
+.btn-hapus {
+  background-color: #dc3545; /* Merah solid */
+  color: #ffffff;            /* Teks putih bersih */
+}
+
+.btn-hapus:hover {
+  background-color: #bd2130; /* Merah sedikit lebih gelap saat diarahkan kursor */
 }
