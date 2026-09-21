@@ -1,7 +1,7 @@
 function Navbar({ halamanAktif, setHalamanAktif }) {
   return (
     <nav className="navbar">
-      <div className="navbar-logo">CRUD SISWA</div>
+      <div className="navbar-logo">SISWA</div>
       <div className="navbar-menu">
         <a 
           href="#home" 

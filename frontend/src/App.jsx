@@ -64,7 +64,7 @@ function App() {
       <Navbar halamanAktif={halamanAktif} setHalamanAktif={setHalamanAktif} />
 
       <div className="container">
-        <h1>CRUD Data Siswa</h1>
+        <h1>TERDAFTAR</h1>
 
         {/* JIKA HALAMAN AKTIF ADALAH 'tambah', TAMPILKAN FORM SISWA */}
         {halamanAktif === 'tambah' && (

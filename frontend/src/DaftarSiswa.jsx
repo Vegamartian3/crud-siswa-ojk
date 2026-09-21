@@ -2,7 +2,7 @@ function DaftarSiswa({ siswa, onEdit, onDelete }) {
 
   return (
     <div className="container-produk">
-      <h2>Daftar Siswa</h2>
+      <h2>Data Siswa</h2>
 
       <table className="tabel-produk">
         <thead>
