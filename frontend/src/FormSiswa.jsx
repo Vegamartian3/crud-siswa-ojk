@@ -130,8 +130,9 @@ function FormSiswa({ siswaEdit, onSuccess }) {
             <option value="">-- Pilih Jurusan --</option>
             <option value="RPL">RPL</option>
             <option value="TKJ">TKJ</option>
-            <option value="DKV">DKV</option>
-            <option value="AKL">AKL</option>
+            <option value="DKV">DKV</option> 
+            <option value="AKL">Pemasaran</option>
+            <option value="AKL">Digital Office</option>
           </select>
         </div>
 
